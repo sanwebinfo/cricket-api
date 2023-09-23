@@ -52,17 +52,18 @@ php -S localhost:6001
 - Get the Live Match Score URL from - `https://www.cricbuzz.com/cricket-match/live-scores`
 - Enter them Directly or replace `www` with `m`
 - XML feed support - `xml.php`
+- Docker Support
 
 ### Example 📋
 
 ```sh
-http://localhost:6001/cri.php?url=https://www.cricbuzz.com/live-cricket-scores/30524/53rd-match-indian-premier-league-2020
+http://localhost:6002/cri.php?url=https://www.cricbuzz.com/live-cricket-scores/30524/53rd-match-indian-premier-league-2020
 ```
 
 (OR)
 
 ```sh
-http://localhost:6001/cri.php?url=https://m.cricbuzz.com/live-cricket-scores/30524/53rd-match-indian-premier-league-2020
+http://localhost:6002/cri.php?url=https://m.cricbuzz.com/live-cricket-scores/30524/53rd-match-indian-premier-league-2020
 ```
 
 ### Example Response 🌐
@@ -147,10 +148,6 @@ fetchscore();
 ```
 
 ## Free Deploy 😍
-
-- Deploy on Heroku
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sanwebinfo/cri-deploy)  
 
 - Deploy on Vercel
 
