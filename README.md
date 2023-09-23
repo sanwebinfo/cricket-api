@@ -6,7 +6,7 @@ unofficial API Data Fetched from `Cricbuzz.com`
 
 This is an unofficial API and not Linked or Partnered with Any Brands/Company.
 
-> Recently we shutdown our Free API Server due to bulk API Calls Personally we Suggest you to Self Host this API on your server - instant Deploy on Vercel and Heroku - <https://github.com/sanwebinfo/cri-deploy#free-deploy->  
+> Recently we shutdown our Free API Server due to bulk API Calls Personally we Suggest you to Self Host this API on your server - instant Deploy on Vercel or create Docker Container - <https://github.com/sanwebinfo/cri-deploy#free-deploy->  
 
 ## How it Works? 🤔
 
@@ -17,11 +17,11 @@ Everything is scraped live and shown to end users in realtime.
 Example: **API URL 🌐**
 
 ```sh
-## Get Live Match URL (Cricbuzz URL will be added in config.php file)
-https://localhost:6001/live.php
+## Get Live Match URL (Cricbuzz URL will be added in config.php file) - Only for Testing the API
+https://localhost:6002/live.php
 
 ## Get match from the cricbuzz URL
-https://localhost:6001/cri.php?url=<Live Match URL>
+https://localhost:6002/cri.php?url=<Live Match URL>
 ```
 
 ## Requirements 📑
@@ -163,7 +163,7 @@ How Deploy Works? - <https://github.com/sanwebinfo/cri-deploy>
 ```sh
 git clone https://github.com/sanwebinfo/cri-deploy.git
 cd cri-deploy
-php -S localhost:6001
+php -S localhost:6002
 ```
 
 - Update Submodule
