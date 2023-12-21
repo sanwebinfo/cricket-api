@@ -2,6 +2,8 @@
 
 Live Cricket Score API 🏏
 
+**API is not working due to the Cricbuzz Mobile site being Fully Redesigned - The full Site Structure was Changed it's a bit complex to get data - Please Consider using the Python Cricket API Version - <https://github.com/sanwebinfo/python-cricket-score/tree/main/api>**
+
 unofficial API Data Fetched from `Cricbuzz.com`
 
 This is an unofficial API and not Linked or Partnered with Any Brands/Company.
