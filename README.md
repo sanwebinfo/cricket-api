@@ -8,7 +8,7 @@ unofficial API Data Fetched from `Cricbuzz.com`
 
 This is an unofficial API and not Linked or Partnered with Any Brands/Company.  
 
-> **Recently we shutdown our Free API Server due to bulk API Calls Personally we Suggest you to Self Host this API on your server - instant Deploy on Vercel or create Docker Container - <https://github.com/sanwebinfo/cricket-api#free-deploy->**  
+> **Recently we shutdown our Free API Server due to bulk API Calls Personally we Suggest you to Self Host this API on your server - instant Deploy on Vercel or create Docker Container - <https://github.com/sanwebinfo/cricket-api?tab=readme-ov-file#free-deploy->**  
 
 ## How it Works? 🤔
 
@@ -110,7 +110,6 @@ http://127.0.0.1:5000/score?id=<Match ID>
 - WordPress
 
 ```php
-## API Auth and Get data
 function display_api_response() {
   $base_url = 'http://127.0.0.1:5000/score?id=';
   $match_id = '123456';
