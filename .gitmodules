@@ -1,3 +1,0 @@
-[submodule "cri-deploy"]
-	path = cri-deploy
-	url = https://github.com/sanwebinfo/cri-deploy

@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn instance to serve Flask
+After=network.target
+[Service]
+User=groot
+Group=www-data
+WorkingDirectory=/var/www/cricket-score-api
+Environment="PATH=/var/www/cricket-score-api/venv/bin"
+ExecStart=/var/www/cricket-score-api/venv/bin/gunicorn --bind 0.0.0.0:5000 wsgi:app
+[Install]
+WantedBy=multi-user.target

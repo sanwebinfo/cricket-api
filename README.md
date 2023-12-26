@@ -1,115 +1,107 @@
 # Free Cricket API 🍔
 
-Live Cricket Score API 🏏
+Cricket API - Live Cricket Score JSON API 🏏  
 
-**API is not working due to the Cricbuzz Mobile site being Fully Redesigned - The full Site Structure was Changed it's a bit complex to get data - Please Consider using the Python Cricket API Version - <https://github.com/sanwebinfo/python-cricket-score/tree/main/api>**
+***PHP, Node.js and deno Cricket API was not working due to the Cricbuzz Mobile site being Fully Redesigned - The full Site Structure was Changed it's a bit complex to get data - Please Consider using this Python Cricket API Version - Breaking Changes: JSON API Structure was changed update your app or website according to the changes in JSON data***  
 
-unofficial API Data Fetched from `Cricbuzz.com`
+unofficial API Data Fetched from `Cricbuzz.com`  
 
-This is an unofficial API and not Linked or Partnered with Any Brands/Company.
+This is an unofficial API and not Linked or Partnered with Any Brands/Company.  
 
-> Recently we shutdown our Free API Server due to bulk API Calls Personally we Suggest you to Self Host this API on your server - instant Deploy on Vercel or create Docker Container - <https://github.com/sanwebinfo/cri-deploy#free-deploy->  
+> **Recently we shutdown our Free API Server due to bulk API Calls Personally we Suggest you to Self Host this API on your server - instant Deploy on Vercel or create Docker Container - <https://github.com/sanwebinfo/cricket-api#free-deploy->**  
 
 ## How it Works? 🤔
 
-We are just fetching the data from Cricbuzz using PHP cURL `preg_match` and `preg_math_all`. It's kind of scraping but we are not storing any data or link in our end.
+Scrape the data using `BeautifulSoup` and export a output via JSON using `Flask` micro web framework.
 
 Everything is scraped live and shown to end users in realtime.
 
 Example: **API URL 🌐**
 
 ```sh
-## Get Live Match URL (Cricbuzz URL will be added in config.php file) - Only for Testing the API
-https://localhost:6002/live.php
-
-## Get match from the cricbuzz URL
-https://localhost:6002/cri.php?url=<Live Match URL>
+# Copy the 5 digit code from cricbuzz Current Live Match URL 
+http://127.0.0.1:5000/score?id=<Match ID>
 ```
 
-## Requirements 📑
+## Requirements and Features 📑
 
-- Server with PHP Support  
-- PHP 7.2 or 7.3 or 7.4 or 8.0 (Test upto PHP 8.1)
-- PHP cURL  
-- Nginx, Apache2 or  Lightspeed  
+- Python 3
+- install Required Modules via `requirements.txt`
+- Virtual Environment for Running Flask server
+- CORS Header
+- Multiple timezone Support for get the Match Starting time
+- Self-hosting support with gunicorn
+- Nginx, Apache2 or Lightspeed for support Proxy
 - HTTPS (For Secure SSL Connections)  
 
 ## Installation 🍯
 
-- Download or Clone Repo to your Server
+- Download or Clone Repo to your Server/localhost
 
 ```sh
-git clone https://github.com/sanwebinfo/cri-deploy.git
-cd cri-deploy
+git clone https://github.com/sanwebinfo/cricket-api
+cd cricket-api/api
+
+## install python env
+sudo apt install python3-venv
+
+## Create Virtual Env
+python3 -m venv venv
+
+## Activate Virtual Env
+source venv/bin/activate
+
+## install Modules
+python3 -m pip install -r requirements.txt
+
+## verify
+python3 -m flask --version
+
+## start the dev server 
+flask --app index.py --debug run --host=0.0.0.0 --port=5000
+
+## Exit from Virtual Env
+deactivate
 ```
 
 - Test the API
 
 ```sh
-php -S localhost:6001
-```
+## API Home page
+http://127.0.0.1:5000/
 
-## Usage 🍟
-
-- Get the Live Match Score URL from - `https://www.cricbuzz.com/cricket-match/live-scores`
-- Enter them Directly or replace `www` with `m`
-- XML feed support - `xml.php`
-- Docker Support
-
-### Example 📋
-
-```sh
-http://localhost:6002/cri.php?url=https://www.cricbuzz.com/live-cricket-scores/30524/53rd-match-indian-premier-league-2020
-```
-
-(OR)
-
-```sh
-http://localhost:6002/cri.php?url=https://m.cricbuzz.com/live-cricket-scores/30524/53rd-match-indian-premier-league-2020
+## GET Match data
+http://127.0.0.1:5000/score?id=<Match ID>
 ```
 
 ### Example Response 🌐
 
-![Cricket API](https://raw.githubusercontent.com/sanwebinfo/cricket-api/main/images/screenshot1.png)  
+![Cricket API](https://raw.githubusercontent.com/sanwebinfo/cricket-api/main/images/screenshot.jpg)  
 
 ```json
 {
-    "success": true,
-    "livescore": {
-        "title": "Sunrisers Hyderabad vs Mumbai Indians, 56th Match",
-        "current": "SRH - 145\/0 (16.2)",
-        "batsman": "Wriddhiman Saha*",
-        "batsmanrun": "57",
-        "ballsfaced": "(43)",
-        "fours": "7",
-        "sixes": "1",
-        "bowler": "Nathan Coulter-Nile*",
-        "bowlerover": "3.2",
-        "bowlerruns": "25",
-        "bowlerwickets": "0",
-        "partnership": "145(98)",
-        "recentballs": "Data Not Found",
-        "lastwicket": "... 0 0 4 1 | 0 4 1 1 0 1 | 1 0",
-        "runrate": "CRR: 8.88",
-        "commentary": [
-            "16.2 Coulter-Nile to W Saha, no run, 139.1kph, ",
-            "16.1 Coulter-Nile to Warner, 1 run, 124.4kph, length, nipping in off the pitch onto middle. Warner makes room and slaps it to deep point ",
-            "15.5 Pattinson to Warner, no run, 139.7kph, backs away, cuts, but ends up miscuing it back down the pitch ",
-            "15.4 Pattinson to W Saha, 1 run, swivels, one-legged, pulling it to the man in the deep behind square ",
-            "15.3 Pattinson to Warner, 1 run, 118.2kph, back of a length, taking pace off, keeping it outside off for Warner to have to reach out. And he does connect this time, to guide it to third man ",
-            "15.1 Pattinson to Warner, no run, 134.5kph, full, outside off, quick, just inside the tramline. Warner stretches, but can't quite connect ",
-            "14.6 Coulter-Nile to Warner, 1 run, 130.6kph, length, nips back in, and Warner jumps away at the last moment with an opened bat face to steer it through point ",
-            "14.4 Coulter-Nile to Warner, no run, skids through as it seams back in sharply to go under Warner's crouched swat, thudding off his thighs towards backward point ",
-            "14.3 Coulter-Nile to Warner, no run, 136.4kph, serious bouncer, climbing back in. Nope, it's the circumstances that determines its ferocity, and with an 18 runs | 33 balls equation, this is gently left alone ",
-            "14.2 Coulter-Nile to W Saha, 1 run, 136.9kph, full, on middle with the angle-in. Saha goes wristy, through mid-wicket ",
-            "14.1 Coulter-Nile to W Saha, no run, 117kph, in-cutter into the tummy. Saha gets cramped in what looked like an initial attempt to cut, and so drops his wrists, opens his bat face and runs out to short third man ",
-            "13.6 D Kulkarni to Warner, 2 runs, 105.4kph, and very comfortable. Around the fourth-stump, which Warner lines up to and punches through point ",
-            "13.5 D Kulkarni to W Saha, 1 run, 127.6kph, full, on off, quiet flick, long-on "
-        ],
-        "teamone": "Data Not Found",
-        "teamtwo": "Data Not Found",
-        "update": "Sunrisers Hyderabad need 5 runs in 22 balls"
-    }
+    "title": "Australia vs Pakistan, 2nd Test - Live Cricket Score",
+    "update": "Day 1: 3rd Session",
+    "livescore": "AUS 168/3 (60)",
+    "runrate": "CRR: 2.8",
+    "batterone": "Travis Head",
+    "batsmanonerun": "5",
+    "batsmanoneball": "(5)",
+    "batsmanonesr": "100",
+    "battertwo": "Marnus Labuschagne",
+    "batsmantworun": "36",
+    "batsmantwoball": "(98)",
+    "batsmantwosr": "36.73",
+    "bowlerone": "Shaheen Afridi",
+    "bowleroneover": "19",
+    "bowleronerun": "61",
+    "bowleronewickers": "0",
+    "bowleroneeconomy": "3.21",
+    "bowlertwo": "Aamer Jamal",
+    "bowlertwoover": "12",
+    "bowlertworun": "37",
+    "bowlertwowickers": "1",
+    "bowlertwoeconomy": "3.08"
 }
 ```
 
@@ -120,9 +112,9 @@ http://localhost:6002/cri.php?url=https://m.cricbuzz.com/live-cricket-scores/305
 ```php
 ## API Auth and Get data
 function display_api_response() {
-  $base_url = 'https://YOUR-API-Domain.com/cri.php?url=';
-  $score_path = 'https://www.cricbuzz.com/live-cricket-scores/30524/53rd-match-indian-premier-league-2020';
-  $url = $base_url.$score_path;
+  $base_url = 'http://127.0.0.1:5000/score?id=';
+  $match_id = '123456';
+  $url = $base_url.$match_id;
   $response = wp_remote_get($url);
   global $body;
   $body = json_decode( $response['body'], true );
@@ -130,16 +122,16 @@ function display_api_response() {
 add_action( 'init', 'display_api_response' );
 ```
 
-Replace `YOUR-API-Domain` with your actual API Domain
+Replace `http://127.0.0.1:5000` with your API URL  
 
 - Fetch API (Javascript)
 
 ```js
-var url = 'https://www.cricbuzz.com/live-cricket-scores/30524/53rd-match-indian-premier-league-2020';
+var match_id = '123456';
 
 async function fetchscore() {
     try {
-        const response = await fetch('https://api.example.com/cri.php?url=' + url);
+        const response = await fetch('http://127.0.0.1:5000/score?id=' + match_id);
         const data = await response.json();
         console.log(data);
     } catch (exception) {
@@ -153,17 +145,9 @@ fetchscore();
 
 - Deploy on Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fsanwebinfo%2Fcri-deploy)  
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsanwebinfo%2Fcricket-api%2Ftree%2Fmain%2Fapi)  
 
-How Deploy Works? - <https://github.com/sanwebinfo/cri-deploy>
-
-## Development 🍩
-
-```sh
-git clone https://github.com/sanwebinfo/cri-deploy.git
-cd cri-deploy
-php -S localhost:6002
-```
+## Development
 
 - Update Submodule
 
